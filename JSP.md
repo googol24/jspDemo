@@ -18,6 +18,9 @@
 - Servlet 通过调用 destroy() 方法终止（结束）。web app退出的时候，destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。
 - 最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。
 
+> Servlet的Bean
+- 在Servlet中使用Bean和在通常程序中使用Bean类似，属性一般是私有的，第一个字母小写便于Bean自己控制自己的属性，并且具有getters and setters
+- Servlet中的Bean一般不应具有GUI表现，一般都是用于实现某一业务逻辑或者取得特定结果
 
 # Tomcat
 Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以作为jsp/servlet的容器，运行JSP 页面和Servlet
@@ -31,6 +34,7 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
 - work -- Tomcat自动生成,放置Tomcat运行时的临时文件(如编译后的JSP文件).如在Tomcat运行时删除此目录.JSP页面将不能运行.[ jsp生成的sevlet放在此目录下]
 
 # Cookie
+> 基本概念
 - HTTP协议的无连接性：HTTP对于交互性场景没有记忆能力。只要服务器返回了响应，一个HTTP请求和响应就结束了
 - Cookie：为了解决HTTP的无状态性，服务器保存到客户端的一种文本文件，与特定客户相关
 - Cookie以“名值对”的方式保存数据
