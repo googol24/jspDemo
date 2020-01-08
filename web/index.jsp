@@ -12,5 +12,9 @@
   </head>
   <body>
     Hello World JSP!
+  <%
+      out.println("This is a JSP Page<br>");
+      out.println("current time:" + new java.util.Date());
+  %>
   </body>
 </html>

@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class DB {
+class DB {
     private static final String DB_URL = "jdbc:mysql://127.0.0.1/test";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "root";

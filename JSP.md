@@ -93,3 +93,31 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
     - 通过HttpServlet的getServletContext()可以拿到
     - 通过ServletContext的getAttribute/setAttribute方法取得/设置相关属性
 
+
+# JSP
+> 基本概念
+- JSP全称Java Server Pages，与 PHP、ASP、ASP.NET 等语言类似，是运行在服务端的语言。
+- 是一种动态生成 HTML、XML 或其他格式文档的Web网页的技术标准
+- JSP 技术是以 Java 语言作为脚本语言的，JSP 网页为整个服务器端的 Java 库单元提供了一个接口来服务于HTTP的应用程序
+> JSP与Servlet
+- JSP本身就是一个Servlet，JSP页面在（第一次）运行的时候会直接被编译成Servlet来处理相应web请求
+- JSP程序由JSP Engine先将它转换成Servlet代码，接着将它编译成类文件载入执行
+> JSP 生命周期:可以参考Servlet生命周期
+- 编译阶段：servlet容器编译servlet源文件，生成servlet类
+- 初始化阶段：加载与JSP对应的servlet类，创建其实例，并调用它的初始化方法
+- 执行阶段：调用与JSP对应的servlet实例的服务方法
+- 销毁阶段：调用与JSP对应的servlet实例的销毁方法，然后销毁servlet实例
+
+> 基本语法
+- 脚本程序：
+    - <% 代码片段 %> 里面可以写一个程序段，但是不能定义方法，因为这里的代码段是在Servlet的service()里面执行的
+- 声明：
+    - <%! declaration; [ declaration; ]+ ... %>
+    - 注意：在<% 代码片段 %>中声明变量时，编译为Servlet为局部变量，在<%! declaration% >中声明时，编译为Servlet的成员变量（Servlet只初始化一次，因而执行处理的Servlet实例也只有一个）
+- 表达式：
+    - <%= 表达式 %>，这个表达式必须为字符串或者可以被转换成字符串，不需要以;结束，且只有一行
+- 注释：
+    - <%-- 注释 --> JSP注释1 不同于HTML的注释，HTML注释通过浏览器查看网页源代码时可以看见注释内容(注意：<!-- 注释 -->是HTML注释)
+    - <% //注释 %> JSP注释2(同Java)
+    - <% /*注释*/ %> JSP注释3(同Java)
+
