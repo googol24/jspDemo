@@ -137,3 +137,22 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
         - 格式：<%@ include file="file_URL" %>
         - JSP Engine会在编译期间JSP程序转换时期把file属性设定的文件包含进来，然后开始执行转换及编译的工作
         - 注意不能向file_URL中传递参数，因为这个是编译期间并非运行期间的指令
+- Action 动作指令，在运行期间的执行的指令
+    - 常见的action:jsp:useBean jsp:include jsp:forward jsp:plugin
+    - jsp:include
+        - 用于动态包含JSP程序或者html文件等
+        - 除非这个指令被执行到，否则它是不会被Tomcat等JSP Engine进行编译的
+        - 格式：
+            - <jsp:include page="urlSpec" flush="true"/>
+            - <jsp:include page="urlSpec" flush="true">
+                    <jsp:param name="paramName" value="paramValue"/>
+              </jsp:include>
+            - flush用于设定是否将结果马上打印出来，必须为“true”
+        - <jsp:param>用来设定include文件的时候请求的参数以及对应的值 xxx.jsp?param=value
+        - 与Directive指令include的区别：
+            - include编译指令是在JSP程序的转换时期就将file属性所指定的程序内容嵌入，然后再编译执行；
+              而include动作指令在转换时期是不会被编译的，只有在客户端请求时期如果被执行到才会被动态地编译载入
+            - include编译指令不能带参数，而include动作指令可以通过<jsp:param>带指定的请求参数
+    
+    - jsp:useBean
+    
