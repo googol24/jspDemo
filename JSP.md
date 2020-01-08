@@ -120,4 +120,20 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
     - <%-- 注释 --> JSP注释1 不同于HTML的注释，HTML注释通过浏览器查看网页源代码时可以看见注释内容(注意：<!-- 注释 -->是HTML注释)
     - <% //注释 %> JSP注释2(同Java)
     - <% /*注释*/ %> JSP注释3(同Java)
-
+- Directive 编译期间的指令，相当于在编译期间的命令
+    - 格式：<%Directive 属性名="属性值"%>
+    - 常见的Directive有：page include taglib
+    - page指令的常见属性
+        - language : 一般为默认java
+        - extends : 继承的类，实际上为默认的JspBase
+        - import : 引入的包，相当于java的import语句
+        - buffer : none|kb size,none表示不缓冲，默认为8k
+        - session : 是否可以使用session
+        - autoFlush : 缓冲器是否可以自动清除
+        - errorPage : 该页面对应的错误引导页
+        - isErrorPage : 该页面是否为错误引导页
+        - contentType : 文件的类型以及编码方式
+    - include指令：将指定的JSP或者HTML文件包含进来
+        - 格式：<%@ include file="file_URL" %>
+        - JSP Engine会在编译期间JSP程序转换时期把file属性设定的文件包含进来，然后开始执行转换及编译的工作
+        - 注意不能向file_URL中传递参数，因为这个是编译期间并非运行期间的指令
