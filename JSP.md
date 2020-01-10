@@ -173,4 +173,39 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
             ![Image text](https://github.com/googol24/image_repo/blob/master/java/javaee/jsp_forward_vs_sendRedirect.png)
     
     - jsp:useBean
-    
+        - 使用jsp:bean，可以在JSP中使用定义好的javaBean
+        - Bean的基本要素：
+            - 必须要有一个不带参数的构造器。在JSP元素创建Bean是会调用空的构造器
+            - Bean类元素没有任何公共实例变量，也即不允许访问实例变量，变量名称首字母必须小写
+            - 通过Bean定义的getters/setters来读写变量的值，并将变量首字母改成大写
+        - jsp:bean的基本用法
+            - <jsp:useBean id="beanName" scope="page|request|session|application"
+                class="package.BeanClass" type="typeName">
+            - <jsp:setProperty name="beanName" property="propertyName" value="propertyValue">
+            - <jsp:getProperty name="beanName" property="propertyName">
+                        
+            - <jsp:useBean/>各项参数的含义
+                - id：对象实例名称
+                - scope：Bean的作用范围，默认为page，对整个页面都有效
+                    > 各个作用域范围的含义：
+                        - page: 仅涵盖使用JavaBean的页面（相当于局部变量）
+                        - request: 有效范围仅限于使用JavaBean的请求
+                        - session: 有效范围在用户整个连接过程中（整个会话阶段均有效）
+                        - application：有效范围涵盖整个应用程序。也就是对整个webapp均有效（ServletContext下有效）                      
+                - class：Bean类的名称
+                - beanName：Bean的名称
+                - type：Bean实例的类型，可以是本类（默认），或者其父类，或者本类实现的接口
+            
+            - <jsp:setProperty>格式
+                <jsp setProperty name="beanName" property="propertyName"|property="*"
+                    value="propertyValue"|param="paramValue"                
+                />
+                相当于beanName.setPropertyName(propertyValue)
+            - <jsp:getProperty>格式
+                <jsp:getProperty name="beanName" property="propertyName"/>
+                相当于beanName.getPropertyName()
+            - 建立表单参数和Bean属性之间的关联
+                - 通过param指定表单元素的名称，通过property属性指定对应Bean属性的名称，由此建立两个变量的关联
+                - 通过*来设置所有属性和输入参数之间的关联
+                - 在建立Bean属性和表单参数之间的对应关系的时候，服务器会将对应的参数<自动转换>成和属性类型相匹配的数据
+                  request.getParameter("paramName")获取的都是String类型
