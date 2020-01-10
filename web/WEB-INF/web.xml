@@ -20,4 +20,13 @@
         <servlet-name>TestPackageServlet</servlet-name>
         <url-pattern>/TestPackageServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletToJsp</servlet-name>
+        <servlet-class>com.googol24.servlet.ServletToJsp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletToJsp</servlet-name>
+        <url-pattern>/servlet/ServletToJsp</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -209,3 +209,47 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
                 - 通过*来设置所有属性和输入参数之间的关联
                 - 在建立Bean属性和表单参数之间的对应关系的时候，服务器会将对应的参数<自动转换>成和属性类型相匹配的数据
                   request.getParameter("paramName")获取的都是String类型
+- JSP内置对象：在jsp里面可以直接使用的对象
+    - out request response pageContext session application config exception page
+    - out内置对象
+        - 是一个缓冲的输出流，用来给客户端返回信息。是javax.servlet.jsp.JspWriter的一个实例
+        - 常用方法
+            - println() 向客户端输出各种类型的数据
+            - newLine() 输出一个换行符
+            - close() 关闭输出流
+            - flush() 输出缓冲区里的数据
+            - clearBuffer() 清除缓冲区里的数据，同时把数据输出到客户端
+            - clear() 清除缓冲区里的数据
+            - getBufferSize() 返回缓冲区的大小
+    - request内置对象
+        - javax.servlet.http.HttpServletRequest接口的一个实例，用于取得请求的Header、信息（例如浏览器版本、语言、编码等）、请求的方式（GET/POST等）、请求的参数名称、参数值、客户端的主机名称等
+        - 常用方法
+            - getMethod() 返回客户端向服务器端传送数据的方法
+            - getParameter(String paramName) 返回客户端向服务器端传送的参数值，该参数由paramName决定
+            - getParameterNames() 获得客户端传送给服务器端的所有参数的名字，结果是一个Enumeration类型的数据
+            - getParameterValues(String name) 获得指定参数的所有值，由name指定
+            - getRemoteURI() 获得发出请求字符串的客户端地址
+            - getRemoteAddr() 获得客户端的IP地址
+            - getRemoteHost() 获取客户端的机器名称
+            - getServerName() 获取服务器的名字
+            - getServletName() 客户端所请求的脚本文件路径
+            - getServerPort() 获取服务器端的端口
+    - response内置对象
+        - javax.servlet.http.HttpServletResponse接口的一个实例，表示服务器端返回给客户端的一个响应，常用于设置HTTP标题，添加Cookie、设置响应内容的类型和状态、发送HTTP重定向和编码URL     
+        - 常用方法：
+            - addCookie(Cookie cookie) 添加一个Cookie对象，用于在客户端保存特定的信息
+            - addHeader(String name, String value) 添加HTTP头信息，该Header信息将发送到客户端
+            - containsHeader(String name) 判断指定名字的Http头是否存在
+            - sendError(int code) 向客户端发送错误码
+            - sendRedirect(String url) 重定向JSP文件（注意和jsp:forward的区别）
+            - sendContentTyp(String contentType) 设置MIME类型（多用于互联网邮件扩展，也即消息内容类型）与编码方式
+    - session内置对象
+        - javax.servlet.http.HttpSession接口的一个实例
+        - 常用方法：setAttribute() getAttribute() isNew() getId()等
+    - application内置对象
+        - javax.servlet.ServletContext 接口的一个实例
+        - 注意application与session的区别
+- JSP与Servlet的通信
+    - 从JSP调用Servlet：<jsp:foward/>直接把请求转发到Servlet或者response.sendRedirect()
+    - 从Servlet调用JSP：response.sendRedirect()或者RequestDispatcher接口的forward(req,res)方法
+        - getServletConfig().getServletContext().getRequestDispatcher("/jsp_servlet/ServletUseJsp.jsp").forward(request, response);
