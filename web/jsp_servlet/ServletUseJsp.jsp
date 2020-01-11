@@ -13,5 +13,9 @@
 <body bgcolor="gray">
 <h2>Servlet 使用 JSP 的例子</h2>
 <h2>这个页面是被 Servlet 调用的</h2>
+<h2>
+    <%--从Servlet跳转过来的，能获取到请求的参数--%>
+    servletName:<%= request.getAttribute("servletName")%>
+</h2>
 </body>
 </html>
