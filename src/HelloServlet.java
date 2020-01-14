@@ -41,10 +41,13 @@ public class HelloServlet extends HttpServlet {
         out.println("<br/>");
         out.println("<h2>param:" + request.getParameter("param") + "</h2>");
         out.println("<h2>context path:" + request.getContextPath() + "</h2>");
+        out.println("<h2>init_param:" + getServletConfig().getInitParameter("init_param") + "</h2>");
+        out.println("<h2>context_param:" + getServletContext().getInitParameter("context_param") + "</h2>");
     }
 
     @Override
     public void init(ServletConfig config) throws ServletException {
+        super.init(config);
         System.out.println("init......");
         this.message = "Hello world, this message is from servlet!";
     }

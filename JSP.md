@@ -133,6 +133,7 @@ Tomcat 服务器是一个免费的开放源代码的Web应用服务器，可以�
         - errorPage : 该页面对应的错误引导页
         - isErrorPage : 该页面是否为错误引导页
         - contentType : 文件的类型以及编码方式
+        - pageEncoding : 指定当前jsp页面的编码
     - include指令：将指定的JSP或者HTML文件包含进来
         - 格式：<%@ include file="file_URL" %>
         - JSP Engine会在编译期间JSP程序转换时期把file属性设定的文件包含进来，然后开始执行转换及编译的工作

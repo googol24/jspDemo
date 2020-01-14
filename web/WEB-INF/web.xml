@@ -3,13 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <context-param>
+        <param-name>context_param</param-name>
+        <param-value>context_val</param-value>
+    </context-param>
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>HelloServlet</servlet-class>
+        <init-param>
+            <param-name>init_param</param-name>
+            <param-value>init_val</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/helloServlet</url-pattern>
+        <url-pattern>/servlet/hello</url-pattern>
     </servlet-mapping>
 
     <servlet>
